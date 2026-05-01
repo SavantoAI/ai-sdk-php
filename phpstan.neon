@@ -1,0 +1,13 @@
+parameters:
+    level: 8
+    paths:
+        - src
+    ignoreErrors:
+        # WordPress functions are only available in WP context
+        - '#Function (home_url|site_url|get_option) not found#'
+        # Allow flexible array typing where full generics aren't needed
+        -
+            identifier: missingType.iterableValue
+        -
+            identifier: missingType.generics
+    reportUnmatchedIgnoredErrors: false

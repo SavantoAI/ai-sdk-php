@@ -1,0 +1,54 @@
+{
+  "name": "savanto/ai-sdk",
+  "description": "PHP SDK for the Savanto API — auto-generated from the OpenAPI spec",
+  "type": "library",
+  "license": "MIT",
+  "keywords": ["ai", "search", "ecommerce", "sdk", "savanto", "openapi"],
+  "homepage": "https://github.com/SavantoAI/ai-sdk-php",
+  "support": {
+    "issues": "https://github.com/SavantoAI/ai-sdk-php/issues",
+    "source": "https://github.com/SavantoAI/ai-sdk-php",
+    "docs": "https://savanto.ai/docs/api",
+    "email": "support@savanto.ai"
+  },
+  "authors": [
+    {
+      "name": "Savanto",
+      "email": "support@savanto.ai"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "guzzlehttp/guzzle": "^7.3",
+    "guzzlehttp/psr7": "^1.7 || ^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0 || ^10.0",
+    "friendsofphp/php-cs-fixer": "^3.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Savanto\\AI\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Savanto\\AI\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "generate": "docker run --rm -v \"$(pwd)/../..:/local\" openapitools/openapi-generator-cli generate -i /local/cloud/openapi.json -g php -o /local/sdks/php/generated --additional-properties=packageName=savanto/ai-sdk,invokerPackage=Savanto\\\\AI,apiPackage=Api,modelPackage=Model && rm -rf src && mv generated/lib src && rm -rf generated",
+    "test": "phpunit"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "publishConfig": {
+    "access": "public"
+  }
+}
